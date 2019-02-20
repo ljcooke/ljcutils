@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# curl-resolve: Test a website before setting up DNS.
+
+set -o errexit
+set -o nounset
+
+ip=${1:-}
+domain=${2:-}
+url=${3:-http://$domain}
+
+if [ -z "$ip" ] || [ -z "$domain" ]; then
+    echo "Usage: curl_resolve IP_ADDRESS DOMAIN [URL]"
+    echo
+    echo "Example: curl_resolve example.com 12.34.56.78"
+    exit 1
+fi
+
+curl --resolve "${domain}:80:${ip}" \
+     --resolve "${domain}:443:${ip}" \
+     --verbose "$url"
