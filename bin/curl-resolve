@@ -4,14 +4,15 @@
 set -o errexit
 set -o nounset
 
+cmd=$(basename "$0")
 ip=${1:-}
 domain=${2:-}
 url=${3:-http://$domain}
 
 if [ -z "$ip" ] || [ -z "$domain" ]; then
-    echo "Usage: curl_resolve IP_ADDRESS DOMAIN [URL]"
+    echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
     echo
-    echo "Example: curl_resolve 12.34.56.78 example.com"
+    echo "Example: $cmd 12.34.56.78 example.com"
     exit 1
 fi
 
