@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # curl-resolve: Test a website before setting up DNS.
 
 set -o errexit
