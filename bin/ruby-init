@@ -1,0 +1,36 @@
+#!/bin/sh
+# ruby-init: Create a new Ruby project with rbenv and Bundler.
+
+set -o errexit
+set -o nounset
+
+ruby_version=${1:-}
+
+if [ -z "$ruby_version" ]; then
+    cmd=$(basename "$0")
+    echo "Usage: $cmd RUBY_VERSION"
+    echo
+    echo "Example: $cmd 2.6.3"
+    exit 1
+fi
+
+function test_new_file() {
+    [ -e "$1" ] || return 0
+    >&2 echo "Error: File exists: $1"
+    exit 1
+}
+
+test_new_file Gemfile
+
+rbenv install --skip-existing "$ruby_version"
+rbenv local "$ruby_version"
+
+gem install bundler
+
+cat <<'RUBY' > Gemfile
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+RUBY
+
+bundle install
