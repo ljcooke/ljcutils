@@ -26,3 +26,16 @@ the `bin` directory. Make sure to set the executable bit, e.g.:
 ```sh
 chmod +x bin/curl-resolve
 ```
+
+## Development
+
+This project uses [ShellCheck](https://www.shellcheck.net/) for static analysis
+and [Bats](https://github.com/sstephenson/bats) for testing.
+
+- On macOS, you can install these using [Homebrew](https://brew.sh/):
+
+  ```sh
+  brew install bats shellcheck
+  ```
+
+Once these are installed, run `make` to analyse and test the code.
