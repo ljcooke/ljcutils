@@ -1,8 +1,8 @@
-.PHONY: default lint test
+.PHONY: default analyze test
 
-default: lint test
+default: analyze test
 
-lint:
+analyze:
 	shellcheck bin/*
 
 test:
