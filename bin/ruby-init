@@ -1,5 +1,9 @@
 #!/bin/sh
 # ruby-init: Create a new Ruby project with rbenv and Bundler.
+#
+# Source: https://github.com/ljcooke/ljcutils
+# License: MIT
+# Copyright: (c) 2019 Liam Cooke
 
 set -o errexit
 set -o nounset

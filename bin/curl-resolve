@@ -1,5 +1,9 @@
 #!/bin/sh
 # curl-resolve: Test a website before setting up DNS.
+#
+# Source: https://github.com/ljcooke/ljcutils
+# License: MIT
+# Copyright: (c) 2019 Liam Cooke
 
 set -o errexit
 set -o nounset
