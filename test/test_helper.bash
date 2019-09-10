@@ -1,4 +1,4 @@
-export LJC_TMP="${BATS_TEST_DIRNAME}/tmp"
+export LJC_TMP="${BATS_TMPDIR}/ljcutils__test"
 export LJC_BIN="${BATS_TEST_DIRNAME}/../bin"
 
 export PATH="${LJC_BIN}:${PATH}"
