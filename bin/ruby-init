@@ -1,5 +1,5 @@
 #!/bin/sh
-# ruby-init: Create a new Ruby project with rbenv and Bundler.
+# ruby-init: Set up a Ruby project to be managed with rbenv and Bundler.
 #
 # Source: https://github.com/ljcooke/ljcutils
 # License: MIT

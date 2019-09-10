@@ -1,17 +1,36 @@
 # ljcutils
 
-Miscellaneous command-line tools.
+A collection of small command-line tools.
 
-| Script | Description | Dependencies |
-|--------|-------------|--------------|
-| [`curl-resolve`][curl-resolve] | Test a website before setting up DNS. | [curl][] |
-| [`ruby-init`][ruby-init] | Create a new Ruby project with rbenv and Bundler. | [rbenv][] |
+## Tools
 
-[curl-resolve]: bin/curl-resolve
-[ruby-init]: bin/ruby-init
+### <code>$ <a href="bin/curl-resolve">curl-resolve</a></code>
 
-[curl]: https://curl.haxx.se/
-[rbenv]: https://github.com/rbenv/rbenv
+Make a HTTP request to your web server before setting up DNS.
+Requires [curl][].
+
+```sh
+# Scenario: A web server is running at the address 12.34.56.78, and has been
+# configured to serve the example.com domain. However, the DNS settings for
+# this domain have not yet propagated.
+#
+# Make a request to this domain using the server's IP address:
+curl-resolve 12.34.56.78 example.com http://example.com/test.html
+```
+
+### <code>$ <a href="bin/ruby-init">ruby-init</a></code>
+
+Set up a Ruby project to be managed with rbenv and Bundler.
+Requires [rbenv][].
+
+```sh
+# Create a new project directory:
+mkdir new-project
+cd new-project
+
+# Set up Ruby 2.6.3 and Bundler in this directory:
+ruby-init 2.6.3
+```
 
 ## Install
 
@@ -30,7 +49,7 @@ The scripts are self-contained, so you may also copy individual scripts from
 the `bin` directory. Make sure to set the executable bit, e.g.:
 
 ```sh
-chmod +x bin/curl-resolve
+chmod +x /path/to/curl-resolve
 ```
 
 ## Development
@@ -45,3 +64,6 @@ and [Bats](https://github.com/sstephenson/bats) for testing.
   ```
 
 Once these are installed, run `make` to analyse and test the code.
+
+[curl]: https://curl.haxx.se/
+[rbenv]: https://github.com/rbenv/rbenv
