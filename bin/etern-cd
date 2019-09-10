@@ -13,7 +13,7 @@ set -o xtrace
 cdparanoia -B
 
 # Eject the CD (OS X)
-if which -s drutil ; then
+if command -v drutil ; then
   drutil tray eject &
 fi
 
@@ -27,6 +27,6 @@ for wav in *.wav ; do
 done
 
 # Save a checksum file (check with "shasum -c check.sha256")
-if which -s shasum ; then
+if command -v shasum ; then
   shasum -a 256 flac/*.flac mp3/*.mp3 | tee check.sha256
 fi
