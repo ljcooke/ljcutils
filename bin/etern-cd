@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/sh
+# etern-cd: Back up music CDs.
+#
+# Source: https://github.com/ljcooke/ljcutils
+# License: MIT
+# Copyright: (c) 2016, 2019 Liam Cooke
+
 set -o errexit
 set -o nounset
 set -o xtrace
@@ -8,16 +14,16 @@ cdparanoia -B
 
 # Eject the CD (OS X)
 if which -s drutil ; then
-    drutil tray eject &
+  drutil tray eject &
 fi
 
 # Encode the files to flac and mp3, and delete the wavs
 mkdir -p flac mp3
 for wav in *.wav ; do
-    basename=${wav%.wav}
-    flac --verify "$wav" -o "flac/${basename}.flac"
-    lame -V0 "$wav" "mp3/${basename}.mp3"
-    rm "$wav"
+  basename=${wav%.wav}
+  flac --verify "$wav" -o "flac/${basename}.flac"
+  lame -V0 "$wav" "mp3/${basename}.mp3"
+  rm "$wav"
 done
 
 # Save a checksum file (check with "shasum -c check.sha256")
