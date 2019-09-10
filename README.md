@@ -54,10 +54,10 @@ chmod +x /path/to/curl-resolve
 
 ## Development
 
-This project uses [ShellCheck](https://www.shellcheck.net/) for static analysis
-and [Bats](https://github.com/sstephenson/bats) for testing.
+This project uses [ShellCheck][shellcheck] for static analysis
+and [Bats][bats] for testing.
 
-- On macOS, you can install these using [Homebrew](https://brew.sh/):
+- On macOS, you can install these using [Homebrew][brew]:
 
   ```sh
   brew install bats shellcheck
@@ -65,5 +65,8 @@ and [Bats](https://github.com/sstephenson/bats) for testing.
 
 Once these are installed, run `make` to analyse and test the code.
 
+[bats]: https://github.com/sstephenson/bats
+[brew]: https://brew.sh/
 [curl]: https://curl.haxx.se/
 [rbenv]: https://github.com/rbenv/rbenv
+[shellcheck]: https://www.shellcheck.net/
