@@ -27,4 +27,6 @@ for wav in *.wav ; do
 done
 
 # Save a checksum file (check with "shasum -c check.sha256")
-shasum -a 256 flac/*.flac mp3/*.mp3 | tee check.sha256
+if which -s shasum ; then
+  shasum -a 256 flac/*.flac mp3/*.mp3 | tee check.sha256
+fi
