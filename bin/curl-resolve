@@ -14,10 +14,10 @@ domain=${2:-}
 url=${3:-http://$domain}
 
 if [ -z "$ip" ] || [ -z "$domain" ]; then
-    echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
-    echo
-    echo "Example: $cmd 12.34.56.78 example.com"
-    exit 1
+  echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
+  echo
+  echo "Example: $cmd 12.34.56.78 example.com"
+  exit 1
 fi
 
 curl --resolve "${domain}:80:${ip}" \

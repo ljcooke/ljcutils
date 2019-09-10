@@ -11,20 +11,17 @@ set -o nounset
 ruby_version=${1:-}
 
 if [ -z "$ruby_version" ]; then
-    cmd=$(basename "$0")
-    echo "Usage: $cmd RUBY_VERSION"
-    echo
-    echo "Example: $cmd 2.6.3"
-    exit 1
+  cmd=$(basename "$0")
+  echo "Usage: $cmd RUBY_VERSION"
+  echo
+  echo "Example: $cmd 2.6.3"
+  exit 1
 fi
 
-test_new_file() {
-    [ -e "$1" ] || return 0
-    >&2 echo "Error: File exists: $1"
-    exit 1
-}
-
-test_new_file Gemfile
+if [ -e Gemfile ]; then
+  >&2 echo "Error: File exists: Gemfile"
+  exit 1
+fi
 
 rbenv install --skip-existing "$ruby_version"
 rbenv local "$ruby_version"
