@@ -2,10 +2,16 @@
 
 Miscellaneous command-line tools.
 
-| Script | Description |
-|--------|-------------|
-| [`curl-resolve`](bin/curl-resolve) | Test a website before setting up DNS. |
-| [`ruby-init`](bin/ruby-init) | Create a new Ruby project with rbenv and Bundler. |
+| Script | Description | Dependencies |
+|--------|-------------|--------------|
+| [`curl-resolve`][curl-resolve] | Test a website before setting up DNS. | [curl][] |
+| [`ruby-init`][ruby-init] | Create a new Ruby project with rbenv and Bundler. | [rbenv][] |
+
+[curl-resolve]: bin/curl-resolve
+[ruby-init]: bin/ruby-init
+
+[curl]: https://curl.haxx.se/
+[rbenv]: https://github.com/rbenv/rbenv
 
 ## Install
 
