@@ -7,7 +7,11 @@ setup() {
 }
 
 teardown() {
-  rm -f Gemfile
+  rm -f Gemfile project/Gemfile
+  if [ -e project ]; then
+    rm project/*
+    rmdir project
+  fi
 }
 
 @test 'ruby-init without arguments prints usage and fails' {
@@ -22,9 +26,29 @@ teardown() {
   [ "${lines[0]}" = "Usage: ruby-init [OPTIONS...] RUBY_VERSION" ]
 }
 
+@test 'ruby-init with -d creates a directory' {
+  run ruby-init -d project 1.2.3
+  [ "$status" -eq 0 ]
+  [ -d project ]
+}
+
+@test 'ruby-init with -d missing an argument prints an error and fails' {
+  run ruby-init -d
+  [ "$status" -eq 1 ]
+  [ "${lines[0]}" = "Error: Option -d is missing an argument" ]
+}
+
 @test 'ruby-init when a Gemfile exists prints an error and fails' {
   touch Gemfile
   run ruby-init 1.2.3
+  [ "$status" -eq 1 ]
+  [ "${lines[0]}" = "Error: File exists: Gemfile" ]
+}
+
+@test 'ruby-init with -d when a Gemfile exists prints an error and fails' {
+  mkdir project
+  touch project/Gemfile
+  run ruby-init -d project 1.2.3
   [ "$status" -eq 1 ]
   [ "${lines[0]}" = "Error: File exists: Gemfile" ]
 }

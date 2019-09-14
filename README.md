@@ -24,12 +24,9 @@ Set up a Ruby project to be managed with rbenv and Bundler.
 Requires [rbenv][].
 
 ```sh
-# Create a new project directory:
-mkdir new-project
-cd new-project
-
-# Set up Ruby 2.6.3 and Bundler in this directory:
-ruby-init 2.6.3
+# Create a directory named my-project, and set up Ruby 2.6.3
+# with rbenv and Bundler in this directory:
+ruby-init -d my-project 2.6.3
 ```
 
 ## Install
