@@ -10,17 +10,37 @@ set -o nounset
 
 usage() {
   cmd=$(basename "$0")
-  echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
+  echo "Usage: $cmd [OPTIONS...] IP_ADDRESS DOMAIN [URL]"
+  echo
+  echo "Options:"
+  echo "  -h    show this help message"
   echo
   echo "Example: $cmd 12.34.56.78 example.com"
 }
+
+while getopts ':h' opt; do
+  case "$opt" in
+    h)
+      usage
+      exit
+      ;;
+    \?)
+      1>&2 echo "Unknown option: -$OPTARG"
+      1>&2 echo
+      1>&2 usage
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND -1))
 
 ip=${1:-}
 domain=${2:-}
 url=${3:-http://$domain}
 
 if [ -z "$ip" ] || [ -z "$domain" ]; then
-  usage
+  1>&2 usage
   exit 1
 fi
 

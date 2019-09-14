@@ -10,13 +10,19 @@ teardown() {
   rm -f Gemfile
 }
 
-@test 'ruby-init without arguments prints usage' {
+@test 'ruby-init without arguments prints usage and fails' {
   run ruby-init
   [ "$status" -eq 1 ]
-  [ "${lines[0]}" = "Usage: ruby-init RUBY_VERSION" ]
+  [ "${lines[0]}" = "Usage: ruby-init [OPTIONS...] RUBY_VERSION" ]
 }
 
-@test 'ruby-init when a Gemfile exists prints an error' {
+@test 'ruby-init with -h prints usage' {
+  run ruby-init -h
+  [ "$status" -eq 0 ]
+  [ "${lines[0]}" = "Usage: ruby-init [OPTIONS...] RUBY_VERSION" ]
+}
+
+@test 'ruby-init when a Gemfile exists prints an error and fails' {
   touch Gemfile
   run ruby-init 1.2.3
   [ "$status" -eq 1 ]

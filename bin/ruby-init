@@ -10,20 +10,38 @@ set -o nounset
 
 usage() {
   cmd=$(basename "$0")
-  echo "Usage: $cmd RUBY_VERSION"
+  echo "Usage: $cmd [OPTIONS...] RUBY_VERSION"
+  echo
+  echo "Options:"
+  echo "  -h    show this help message"
   echo
   echo "Example: $cmd 2.6.3"
 }
 
+while getopts ':h' opt; do
+  case "$opt" in
+    h)
+      usage
+      exit
+      ;;
+    \?)
+      1>&2 echo "Unknown option: -$OPTARG"
+      1>&2 echo
+      1>&2 usage
+      exit 1
+      ;;
+  esac
+done
+
 ruby_version=${1:-}
 
 if [ -z "$ruby_version" ]; then
-  usage
+  1>&2 usage
   exit 1
 fi
 
 if [ -e Gemfile ]; then
-  >&2 echo "Error: File exists: Gemfile"
+  1>&2 echo "Error: File exists: Gemfile"
   exit 1
 fi
 

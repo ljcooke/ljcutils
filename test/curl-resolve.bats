@@ -6,13 +6,22 @@ setup() {
   setup_dir
 }
 
-@test 'curl-resolve without arguments prints usage' {
+@test 'curl-resolve without arguments prints usage and fails' {
   run curl-resolve
   [ "$status" -eq 1 ]
-  [ "${lines[0]}" = "Usage: curl-resolve IP_ADDRESS DOMAIN [URL]" ]
+  [ "${lines[0]}" = "Usage: curl-resolve [OPTIONS...] IP_ADDRESS DOMAIN [URL]" ]
+}
+
+@test 'curl-resolve with incomplete arguments prints usage and fails' {
   run curl-resolve 1.2.3.4
   [ "$status" -eq 1 ]
-  [ "${lines[0]}" = "Usage: curl-resolve IP_ADDRESS DOMAIN [URL]" ]
+  [ "${lines[0]}" = "Usage: curl-resolve [OPTIONS...] IP_ADDRESS DOMAIN [URL]" ]
+}
+
+@test 'curl-resolve with -h prints usage' {
+  run curl-resolve -h
+  [ "$status" -eq 0 ]
+  [ "${lines[0]}" = "Usage: curl-resolve [OPTIONS...] IP_ADDRESS DOMAIN [URL]" ]
 }
 
 @test 'curl-resolve with a URL argument calls curl' {
