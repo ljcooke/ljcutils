@@ -8,13 +8,17 @@
 set -o errexit
 set -o nounset
 
-ruby_version=${1:-}
-
-if [ -z "$ruby_version" ]; then
+usage() {
   cmd=$(basename "$0")
   echo "Usage: $cmd RUBY_VERSION"
   echo
   echo "Example: $cmd 2.6.3"
+}
+
+ruby_version=${1:-}
+
+if [ -z "$ruby_version" ]; then
+  usage
   exit 1
 fi
 

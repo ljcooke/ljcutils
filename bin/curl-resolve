@@ -8,15 +8,19 @@
 set -o errexit
 set -o nounset
 
-cmd=$(basename "$0")
+usage() {
+  cmd=$(basename "$0")
+  echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
+  echo
+  echo "Example: $cmd 12.34.56.78 example.com"
+}
+
 ip=${1:-}
 domain=${2:-}
 url=${3:-http://$domain}
 
 if [ -z "$ip" ] || [ -z "$domain" ]; then
-  echo "Usage: $cmd IP_ADDRESS DOMAIN [URL]"
-  echo
-  echo "Example: $cmd 12.34.56.78 example.com"
+  usage
   exit 1
 fi
 
