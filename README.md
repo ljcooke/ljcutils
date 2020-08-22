@@ -24,11 +24,10 @@ Clone this repo, and add the `bin` directory to your path. For example:
 
 ```sh
 # Clone the repo
-cd $HOME/src
-git clone https://github.com/ljcooke/ljcutils.git
+git clone https://git.sr.ht/~ljc/utils
 
 # Add the following line to your .bash_profile or similar
-export PATH="$PATH:$HOME/src/ljcutils/bin"
+export PATH="$PATH:$HOME/path/to/utils/bin"
 ```
 
 The scripts are self-contained, so you may also copy individual scripts from
