@@ -18,17 +18,6 @@ Requires [curl][].
 curl-resolve 12.34.56.78 example.com http://example.com/test.html
 ```
 
-### <code>$ <a href="bin/ruby-init">ruby-init</a></code>
-
-Set up a Ruby project to be managed with rbenv and Bundler.
-Requires [rbenv][].
-
-```sh
-# Create a directory named my-project, and set up Ruby 2.6.3
-# with rbenv and Bundler in this directory:
-ruby-init -d my-project 2.6.3
-```
-
 ## Install
 
 Clone this repo, and add the `bin` directory to your path. For example:
@@ -65,5 +54,4 @@ Once these are installed, run `make` to analyse and test the code.
 [bats]: https://github.com/sstephenson/bats
 [brew]: https://brew.sh/
 [curl]: https://curl.haxx.se/
-[rbenv]: https://github.com/rbenv/rbenv
 [shellcheck]: https://www.shellcheck.net/
